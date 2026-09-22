@@ -1,0 +1,9 @@
+[
+  {"operation": "type_text", "label": "Search this folder…", "text": "Screenshot 2026-09-12", "waitFor": true},
+  {"operation": "click", "label": "Grid view", "waitFor": true},
+  {"operation": "double_click", "label": "Screenshot 2026-09-12.png", "waitFor": true},
+  {"operation": "wait"},
+  {"operation": "wait"},
+  {"operation": "click", "label": "File screenshots", "waitFor": true},
+  {"operation": "click", "label": "Review", "waitFor": true}
+]

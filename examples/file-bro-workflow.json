@@ -1,0 +1,5 @@
+{
+  "goal": "Search for Screenshot 2026-09-12, switch to Grid, and double-click Screenshot 2026-09-12.png to inspect its image. Wait until the image preview is loaded. Then open the saved File screenshots automation and open Review to see the exact proposed moves and blocked destination. Stop on Review.",
+  "check": "search-inspect-review",
+  "text_values": ["Screenshot 2026-09-12", ""]
+}

@@ -1,0 +1,5 @@
+{
+  "goal": "Open the saved File screenshots automation, then open Review to see the exact proposed file moves and the blocked destination. Stop on the review screen.",
+  "check": "review-f1",
+  "text_values": []
+}

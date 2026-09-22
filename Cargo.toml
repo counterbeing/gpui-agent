@@ -1,0 +1,32 @@
+[package]
+name = "gpui-agent"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.98"
+license = "MIT"
+repository = "https://github.com/stolinski/gpui-agent"
+readme = "README.md"
+description = "Opt-in, snapshot-bound automation primitives for GPUI applications"
+publish = false
+include = ["src/**", "python/**/*.py", "tests/*.py", "examples/*.rs", "examples/*.json", "integrations/*.ts", "integrations/*.md", "Cargo.toml", "pyproject.toml", "run.py", "prepare-native-tree.py", "patches/*.rs", "patches/*.json", "README.md", "PROTOCOL.md", "LICENSE", ".env.example", ".gitignore"]
+
+[features]
+default = []
+gpui = ["dep:gpui"]
+# Requires the pinned framework patch prepared in an isolated workspace.
+native-tree = ["gpui"]
+demo = ["native-tree", "dep:gpui-platform"]
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+thiserror = "2"
+gpui = { package = "gpui-pre", version = "=0.3.5", optional = true }
+gpui-platform = { package = "gpui-pre-platform", version = "=0.3.5", features = ["runtime_shaders"], optional = true }
+
+[[example]]
+name = "counter"
+required-features = ["demo"]
+
+[lints.rust]
+unsafe_code = "forbid"

@@ -1,0 +1,38 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - uses: pnpm/action-setup@v4
+        with:
+          version: '11.1.3'
+      - name: Python fixtures (no GUI or model calls)
+        run: python3 -m unittest discover -s tests -v
+      - name: TypeScript dependencies
+        run: pnpm --dir typescript install --frozen-lockfile --ignore-scripts
+      - name: TypeScript checks
+        run: |
+          pnpm --dir typescript check
+          pnpm --dir typescript test
+      - name: Rust toolchain
+        run: rustup show
+      - name: Rust protocol (no native-tree feature or GUI)
+        run: |
+          cargo test --lib
+          cargo clippy --lib -- -D warnings

@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "fixtureOnly": true,
+  "envFile": ".env",
+  "apps": {
+    "counter": {
+      "description": "Fresh Counter fixture; Increment button and count label",
+      "application": ["./target/release/examples/counter", "--agent", "{session}"],
+      "maxRequests": 20,
+      "maxSeconds": 120
+    }
+  }
+}

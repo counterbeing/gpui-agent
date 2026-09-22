@@ -1,0 +1,5 @@
+# Development toolchain for the matched GPUI Kit stack; not a product MSRV promise.
+[toolchain]
+channel = "1.98.1"
+profile = "minimal"
+components = ["rustfmt", "clippy"]
