@@ -59,9 +59,9 @@ class PreparationTests(unittest.TestCase):
     def test_wrong_archive_refuses_before_output_creation(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
-            upstream = root / 'registry/src/index/gpui-pre-0.3.8'
+            upstream = root / 'registry/src/index/gpui-pre-0.3.9'
             upstream.mkdir(parents=True)
-            archive = root / 'registry/cache/index/gpui-pre-0.3.8.crate'
+            archive = root / 'registry/cache/index/gpui-pre-0.3.9.crate'
             archive.parent.mkdir(parents=True)
             archive.write_bytes(b'fixture-only bad archive')
             (root / 'patches').mkdir()
