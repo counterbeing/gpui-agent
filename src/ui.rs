@@ -6,7 +6,7 @@ pub use server::{serve, serve_with_checks};
 use crate::{Control, Operation, Rect, Surface};
 use gpui::accesskit::{Action, ActionData, ActionRequest, NodeId, Role, TreeId, TreeUpdate};
 use gpui::{
-    App, InputEvent, MouseDownEvent, MouseMoveEvent, MouseUpEvent, ScrollDelta, ScrollWheelEvent,
+    App, InputEvent, MouseDownEvent, MouseMoveEvent, MouseUpEvent, ScrollDelta, ScrollEvent,
     Window, point, px,
 };
 use std::collections::{BTreeMap, BTreeSet};
@@ -199,7 +199,7 @@ pub(crate) fn dispatch(
         }
         Operation::ScrollUp | Operation::ScrollDown => {
             window.dispatch_event(
-                ScrollWheelEvent {
+                ScrollEvent {
                     position,
                     delta: ScrollDelta::Pixels(point(
                         px(0.),
